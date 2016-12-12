@@ -5,7 +5,6 @@ angular.module('app', [])
 
     $scope.content = 'loading';
 
-
     $http({
       method: 'GET',
       url: 'https://sneakpeeq-sites.s3.amazonaws.com/interviews/ce/feeds/store.js'

@@ -2,21 +2,33 @@
 <html>
   <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <div ng-app="app" ng-controller="AppCtrl">
-      <div>
-        <h2>Sort</h2>
-        <select>
-        </select>
-      </div>
-      <div>
-        <h2>Filter</h2>
-        <select>
-        </select>
+      <div class="sortFilter">
+        <div>
+          <h2>Filter</h2>
+          <select name="filter" ng-model="filterSelect">
+            <option selected value="0"> Greater than $0 </option>
+            <option value="2000"> Greater than $20 </option>
+          </select>
+        </div>
+        <div>
+          <h2>Sort</h2>
+          <select name="sort" ng-model="sortSelect">
+            <option selected value="name">name</option>
+            <option value="maxPrice">price</option>
+            <option value="createdAt">date</option>
+          </select>
+        </div>
       </div>
       <div class="content">
-        <div ng-repeat="item in content">
+        <div class="item" ng-repeat="item in content | filter: filterSelect | orderBy: sortSelect">
+          <div class="contentInfo">
+            <h2>{{item.name}}</h2>
+            <p>{{item.maxPrice / 100}}</p>
+          </div>
           <img ng-src="https:{{item.mainImage.ref}}"/>
         </div>
       </div>
