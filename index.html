@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="app" ng-controller="AppCtrl">
+      <div>
+        <h2>Sort</h2>
+        <select>
+        </select>
+      </div>
+      <div>
+        <h2>Filter</h2>
+        <select>
+        </select>
+      </div>
+      <div class="content">
+        <div ng-repeat="item in content">
+          <img ng-src="https:{{item.mainImage.ref}}"/>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
