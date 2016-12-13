@@ -1,9 +1,8 @@
 angular.module('app', [])
-  .controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+  .controller('AppCtrl', ['$scope', '$http', 'priceFilter', function($scope, $http, priceFilter) {
     
-    const beginningUrl = 'https://sneakpeeq-sites.s3.amazonaws.com/';
-
     $scope.content = 'loading';
+    $scope.priceFilter = priceFilter.priceFilter;
 
     $http({
       method: 'GET',
@@ -14,4 +13,18 @@ angular.module('app', [])
     },(err) =>{
       console.log(err);
     });
+
+  }])
+  .factory('priceFilter', [ function() {
+
+    const priceFilter = (val) =>{
+      return (item) =>{
+        if(val === undefined) return true;
+        return item.maxPrice >= val;
+      };
+    };
+
+    return {
+      priceFilter: priceFilter
+    };
   }]);
