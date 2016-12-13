@@ -19,9 +19,9 @@
           <h2>Sort</h2>
           <select name="sort" ng-model="sortSelect">
             <option disabled selected value> -- select an option -- </option>
-            <option value="name">name</option>
-            <option value="maxPrice">price</option>
-            <option value="createdAt">date</option>
+            <option value="name">Name</option>
+            <option value="maxPrice">Price</option>
+            <option value="createdAt">Date</option>
           </select>
         </div>
       </div>
@@ -29,7 +29,7 @@
         <div class="item" ng-repeat="item in content | filter: priceFilter(filterSelect) | orderBy: sortSelect">
           <div class="contentInfo">
             <h2>{{item.name}}</h2>
-            <p>{{item.maxPrice / 100}}</p>
+            <p>${{item.maxPrice / 100}}</p>
           </div>
           <img ng-src="https:{{item.mainImage.ref}}"/>
         </div>
